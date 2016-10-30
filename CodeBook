@@ -1,0 +1,50 @@
+PROJECT DESCRIPTION
+
+Experiments were carried out with a group of 30 volunteers within an age bracket of 19-48 years.
+Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. 
+Using its embedded accelerometer and gyroscope, 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz were captured. 
+The experiments were video-recorded to label the data manually. 
+The obtained dataset was randomly partitioned into two sets, where 70% of the volunteers were selected for generating the training data and 30% the test data. 
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). 
+The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. 
+The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. 
+From each window, a vector of features was obtained by calculating variables from the time and frequency domain. 
+A file 'features_info.txt' was provided with more details. 
+
+For each record, the following was provided:
+
+- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+- Triaxial Angular velocity from the gyroscope. 
+- A 561-feature vector with time and frequency domain variables. 
+- Its activity label. 
+- An identifier of the subject who carried out the experiment.
+
+EXECUTION
+
+Getting the data
+
+A zipped folder including the data was obtained from the following link ("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip")
+The folder was unzipped into a 'data' folder. The following files were read into R.
+- test/subject_test.txt
+- test/X_test.txt
+- test/y_test.txt
+- train/subject_train.txt
+- train/X_train.txt
+- train/y_train.txt
+Data from the uploaded files were read in using read.table.
+
+Merging datasets
+By binding the row and columns of the training and test datasets, data from the experiment was merged into one file 'alldata'.
+
+The mean and standard deviation for each measurement was extracted.
+This was done by subsettinng the name of features by measurements on the mean and standard deviation and then subsetting the features of the dataframe by the selected names of features.
+
+Activities in the dataset were named descriptively
+prefix t substituted with time
+Acc substituted with Accelerometer
+Gyro substituted with Gyroscope
+prefix f is substituted with frequency
+Mag is substituted with Magnitude
+BodyBody substituted with Body
+
+Finally, a second tidy data set 'tidydata.txt' was created!
